@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园圈 CampusCircle - 南京工业大学校园社交平台</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <div class="logo-icon me-2">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="brand-text">校园圈</span>
+                <span class="brand-sub">CampusCircle</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-page="home"><i class="fas fa-home me-1"></i>首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="community"><i class="fas fa-comments me-1"></i>动态</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="study"><i class="fas fa-book me-1"></i>学术</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="activities"><i class="fas fa-calendar-alt me-1"></i>活动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="friends"><i class="fas fa-heart me-1"></i>交友</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="games"><i class="fas fa-gamepad me-1"></i>游戏</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="news"><i class="fas fa-newspaper me-1"></i>资讯</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center" id="auth-section">
+                    <!-- 动态填充登录/用户状态 -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main id="main-content">
+        <!-- 动态加载各页面内容 -->
+    </main>
+
+    <!-- 登录 Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><i class="fas fa-user-circle me-2"></i>登录校园圈</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">用户名 / 学号</label>
+                            <input type="text" class="form-control" id="loginUsername" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">密码</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">记住我</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">登 录</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="text-muted">还没有账号？<a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" class="text-decoration-none">立即注册</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 注册 Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title"><i class="fas fa-user-plus me-2"></i>加入校园圈</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label class="form-label">用户名</label>
+                            <input type="text" class="form-control" id="regUsername" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">学号</label>
+                            <input type="text" class="form-control" id="regStudentId" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">院系</label>
+                            <select class="form-select" id="regDepartment" required>
+                                <option value="">请选择院系</option>
+                                <option value="计算机科学与技术">计算机科学与技术</option>
+                                <option value="机械工程">机械工程</option>
+                                <option value="电气工程">电气工程</option>
+                                <option value="化工学院">化工学院</option>
+                                <option value="材料科学">材料科学</option>
+                                <option value="经济与管理">经济与管理</option>
+                                <option value="人文与社会科学">人文与社会科学</option>
+                                <option value="外国语">外国语</option>
+                                <option value="建筑学院">建筑学院</option>
+                                <option value="生物与制药工程">生物与制药工程</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">密码</label>
+                            <input type="password" class="form-control" id="regPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">确认密码</label>
+                            <input type="password" class="form-control" id="regPasswordConfirm" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">注 册</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="text-muted">已有账号？<a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-decoration-none">立即登录</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 发布动态 Modal -->
+    <div class="modal fade" id="postModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-pen me-2"></i>发布动态</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="postForm">
+                        <div class="mb-3">
+                            <textarea class="form-control" id="postContent" rows="4" placeholder="分享你的想法..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">话题标签</label>
+                            <div class="tag-input-wrapper">
+                                <input type="text" class="form-control" id="postTags" placeholder="添加话题，如：学霸心得、运动打卡">
+                            </div>
+                            <div class="quick-tags mt-2">
+                                <span class="quick-tag" data-tag="学霸心得">#学霸心得</span>
+                                <span class="quick-tag" data-tag="运动打卡">#运动打卡</span>
+                                <span class="quick-tag" data-tag="校园活动">#校园活动</span>
+                                <span class="quick-tag" data-tag="日常分享">#日常分享</span>
+                                <span class="quick-tag" data-tag="考研加油">#考研加油</span>
+                                <span class="quick-tag" data-tag="美食推荐">#美食推荐</span>
+                            </div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="anonymousPost">
+                            <label class="form-check-label" for="anonymousPost">
+                                <i class="fas fa-mask me-1"></i>匿名发布
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">发 布</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 用户菜单 Dropdown -->
+    <div class="modal fade" id="userMenuModal" tabindex="-1">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="user-menu-header p-3 text-center bg-light">
+                        <div class="user-avatar-lg mb-2">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h6 id="menuUsername">用户名</h6>
+                        <p class="text-muted small mb-0" id="menuUserDept">院系</p>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action" id="goToProfile">
+                            <i class="fas fa-user me-2"></i>我的主页
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" id="goToSettings">
+                            <i class="fas fa-cog me-2"></i>个人设置
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" id="goToAdmin" style="display:none;">
+                            <i class="fas fa-shield-alt me-2"></i>管理后台
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action text-danger" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt me-2"></i>退出登录
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 容器 -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert">
+            <div class="toast-body d-flex align-items-center">
+                <i class="fas fa-check-circle text-success me-2" id="toastIcon"></i>
+                <span id="toastMessage">操作成功</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="fas fa-graduation-cap me-2"></i>校园圈 CampusCircle</h5>
+                    <p class="text-muted small">南京工业大学校园社交平台<br>连接校园，共享青春</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6>快捷链接</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li><a href="#" class="text-muted">关于我们</a></li>
+                        <li><a href="#" class="text-muted">用户协议</a></li>
+                        <li><a href="#" class="text-muted">隐私政策</a></li>
+                        <li><a href="#" class="text-muted">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6>关注我们</h6>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-3"><i class="fab fa-weixin fa-lg"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-qq fa-lg"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-weibo fa-lg"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-bilibili fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-secondary">
+            <p class="text-center text-muted small mb-0">© 2026 南京工业大学 · 校园圈 CampusCircle · All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
